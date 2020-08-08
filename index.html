@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+	<title>LUCKY ROLL</title>
+</head>
+<body>
+	<h1>My Lucky Roll</h1>
+	<h3>Tentez votre chance!</h3>
+	<div id="extrait"></div>
+	<div>
+		<form action="#" method="get" name="modulo">
+			<div class="form-compteiner">
+				<div>
+					<select id="pari" name="pari">
+						<option value="null" selected disabled>Sélectionnez un numéro</option>
+						<script type="text/javascript">
+							for(i=0;i<=36;i++){
+								document.write('<option>'+i+'</option>');
+							}
+						</script>
+					</select>
+				</div>
+				<div>
+					<form action="">
+						<input type="text" placeholder="Saisir une somme">
+						<span class="border"></span>
+					</form>
+					<p>Couleur:</p>
+					<input type="radio" id="rouge" name="couleur" value="#ff0000" /><label>Rouge</label>
+					<input type="radio" id="noir" name="couleur" value="#000000" /><label>Noir</label>
+				</div>
+				<div>
+					<p>Type:</p>
+					<input type="radio" id="pair" name="type" value="0" /><label>Pair</label>
+					<input type="radio" id="impair" name="type" value="1" /><label>Impair</label>
+				</div>
+			</div>
+			<button class="btn" name="jeu" value="piece" onClick="javascript:piece();">GO</button>
+		</form>
+	</div>
+	<div id="resultat"></div>
+	<div id="sorties"></div>
+</body>
+<script>
+	var couleurs = new Array();
+  	var intervalle;
+  	var rouge = "#ff0000";
+  	var noir = "#000000";
+  	var vert = "#00ff00";
+
+  	couleurs[0] = vert;
+  	couleurs[1] = rouge;
+  	couleurs[2] = noir;
+  	couleurs[3] = rouge;
+  	couleurs[4] = noir;
+  	couleurs[5] = rouge;
+  	couleurs[6] = noir;
+  	couleurs[7] = rouge;
+  	couleurs[8] = noir;
+  	couleurs[9] = rouge;
+  	couleurs[10] = noir;
+  	couleurs[11] = noir;
+  	couleurs[12] = rouge;
+  	couleurs[13] = noir;
+  	couleurs[14] = rouge;
+  	couleurs[15] = noir;
+  	couleurs[16] = rouge;
+  	couleurs[17] = noir;
+  	couleurs[18] = rouge;
+  	couleurs[19] = rouge;
+  	couleurs[20] = noir;
+  	couleurs[21] = rouge;
+  	couleurs[22] = noir;
+  	couleurs[23] = rouge;
+  	couleurs[24] = noir;
+  	couleurs[25] = rouge;
+  	couleurs[26] = noir;
+  	couleurs[27] = rouge;
+  	couleurs[28] = noir;
+  	couleurs[29] = noir;
+  	couleurs[30] = rouge;
+  	couleurs[31] = noir;
+  	couleurs[32] = rouge;
+  	couleurs[33] = noir;
+  	couleurs[34] = rouge;
+  	couleurs[35] = noir;
+  	couleurs[36] = rouge;
+
+  	var compte = 0;
+  	var temps;
+
+  	function piece(){// fonction pour retarder l'exécution de la fonction suivante
+
+  		if(document.modulo.pari.value!="null"){
+  			temps=Math.round(Math.random()*4000+3000);
+  			document.getElementById('extrait').innerHTML= "<img src='giphy.gif' width='200' height='200' />"
+  			setTimeout("giuseppe()",temps);
+  			desactiver();
+  		} else {
+  			alert('Vous devez dabord selectionner un numero');
+  		}
+
+  	}
+
+  	function desactiver() {
+  		document.modulo.jeu.disabled=true;
+  		document.getElementById("pari").disabled=true;
+  		document.getElementById("rouge").disabled=true;
+  		document.getElementById("noir").disabled=true;
+  		document.getElementById("pair").disabled=true;
+  		document.getElementById("impair").disabled=true;
+  	}
+
+  	function competences(){
+  		document.modulo.jeu.disabled=false;
+  		document.getElementById("pari").disabled=false;
+  		document.getElementById("rouge").disabled=false;
+  		document.getElementById("noir").disabled=false;
+  		document.getElementById("pair").disabled=false;
+  		document.getElementById("impair").disabled=false;
+  	}
+
+  	function giuseppe(){
+  		compte++;
+  		giri=Math.round(Math.random()*50+10);//variable pour les temps de durée du tour
+
+  		casuale=Math.round(Math.random()*36);// nombre aleatoire
+  		document.getElementById('extrait').innerHTML = casuale;
+
+  		clearInterval(intervalle);
+  		compte=0;
+  		document.getElementById("sorties").innerHTML=document.getElementById("sorties").innerHTML+"<div style='background-color:"+couleurs[casuale]+"; width:70px; height:70px; text-align:center; float:left; margin:5px;padding:5px;'><font size='7' color='#fff'>"+casuale+"</font></div>";//cronologia dei numeri
+  		numero=document.modulo.pari.value;
+
+  		var message="";
+
+  		message="<table border='0' align='center' width='600' style='margin:0 auto;'><tr><td>Numero</td><td>";
+
+  		if (numero==casuale){
+  			message=message+ "<img src='vinto.gif' /></td><td>Tu as deviné</td></tr>";
+  		} else {
+  			message=message+ "<img src='perso.gif' /></td><td> Tu n'as pas deviné</td></tr>";
+  		}
+
+  		var couleurchoisi=document.modulo.couleur.value; // valeur de la couleur choisi
+
+  		message=message+"<tr><td>Couleur</td><td>"
+
+  		if(couleurchoisi==couleurs[casuale]){
+  			message=message+ "<img src='vinto.gif' /></td><td>Tu as deviné</td></tr>";
+  		} else {
+  			message=message+ "<img src='perso.gif' /></td><td>Tu n'as pas deviné</td></tr>";
+  		}
+
+  		var type=document.modulo.type.value;
+
+  		message=message+"<tr><td>Pair/ Impaire</td><td>";
+
+  		if(casuale%2==type){
+  			message=message+ "<img src='vinto.gif' /></td><td>Bravo, le numero est ";
+  			if(casuale%2==0){
+  				message=message+" pair";
+  			} else {
+  				message=message+"impair";
+  			}
+  			message=message+"</td></tr>";
+  		} else {
+  			message=message+"<img src='perso.gif' /></td><td>dommage le nombre est  ";
+  			if(casuale%2==0){
+  				message=message+" pair";
+  			} else {
+  				message=message+" impair";
+  			}
+  			message=message+"</td></tr>";
+  		}
+
+  		message=message+"</table><p>duree du jeu "+Math.round(temps/100)/10 +"s.";
+
+  	
+
+  		document.getElementById('resultat').innerHTML=message;
+  		competences();
+  	}
+</script>
+</html>

@@ -1,0 +1,87 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Montserrat', sans-serif;
+}
+body { 
+  background-image: url(back.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+}
+#extrait {
+  height: 200px;
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #ffffff;
+  font-size: 150px;
+  font-weight: bolder;
+  font-family: Arial;
+  text-align: center;
+}
+h1 {color:#fff;font-size: 50px;text-align: center;letter-spacing: 1px;margin: 30px 0;font-family: 'Rubik', serif;}
+h3 {color:#fff;font-size: 50px;text-align: center;letter-spacing: 1px;margin: 30px 0;font-family: 'Courier New', Courier, monospace, serif;}
+ form {width: 60%;margin:50px auto;text-align: center;}
+.form-container {display: flex;flex-wrap: wrap;justify-content: space-between;}
+
+form {
+  width: 400px;
+  margin: auto;
+}
+
+form input:focus{
+  outline: none;
+}
+
+form input{
+  width: 100%;
+  padding: 10px 0;
+  border: none;
+  border-bottom: 1px solid #ccc;
+}
+
+
+#pari {
+  appearance: none;
+  outline: none;
+  box-shadow: none;
+  background: #2c3e50;
+  border: 0 !important;
+}
+
+#pari {
+  position: center;
+  display: block;
+  width: 20em;
+  height: 3em;
+  background: #2c3e50;
+  overflow: hidden;
+  line-height: 3;
+  border-radius: .25em;
+}
+
+#pari {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0 0 0 .5em;
+  color: #fff;
+  font-size: lem;
+  letter-spacing: .8px;
+  cursor: pointer;
+}
+
+.btn {	  	
+border-radius: 10px;
+width: 200px;
+height: 50px;
+font-size: 22px;
+margin: 40px auto;
+cursor: pointer;
+background: red;
+color: #fff;
+font-weight: 700;
+letter-spacing: 1px;
+border: 0;
+}
